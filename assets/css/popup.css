@@ -1,0 +1,44 @@
+
+.modal-dialog {
+      max-width: 800px;
+      margin: 90px auto;
+      top: 5vh;
+  }
+
+.modal-body {
+  position:relative;
+  padding:0px;
+  z-index: 9999;
+}
+.close {
+  position:absolute;
+  right:-30px;
+  top:0;
+  z-index:999;
+  font-size:2rem;
+  font-weight: normal;
+  color:#fff;
+  opacity:1;
+}
+
+/* This is purely for the demo */
+/* .container {
+  max-width: 800px;
+  margin: 0 auto;
+} */
+.plyr {
+  border-radius: 4px;
+/*   margin-bottom: 15px; */
+} 
+
+/* .plyr__poster {
+ z-index: 1050 !important;
+}
+
+.plyr__video-wrapper {
+  z-index: 1050 !important;
+} */
+
+.modal-backdrop {
+  z-index: 0 !important;
+}

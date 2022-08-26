@@ -1,0 +1,140 @@
+# Site
+name: 'Minik Damla'
+language: "tr"
+description: 'Çocuklara Okumayı Sevdiren Yayınevi...'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon/favicon.ico'
+baseurl: ''
+
+# Social Settings
+disqus: #'demowebsite'
+email: 'iletisim@damlayayinevi.com.tr'
+mailchimp-list: #'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+google_analytics: 'UA-53710816-12'
+katalogurl-egitim: 'https://cdn.e-damla.com.tr/PUBLIC/Kataloglar/okul-oncesi-egitim/index.html'
+katalogurl-hikaye: 'https://cdn.e-damla.com.tr/PUBLIC/Kataloglar/minikdamla/index.html'
+twitter: #'https://twitter.com/gencdamlakitap'
+facebook: #'https://www.facebook.com/gencdamlakitap'
+instagram: #'https://instagram.com/gencdamla_kitap'
+youtube: #'https://www.youtube.com/c/DamlaYay%C4%B1nevi%C4%B0stanbul'
+
+pagepreview:
+  enabled: true
+  prefix: 'https://cdn.e-damla.com.tr/damlayayinevi_ornek_sayfalar/'
+  postfix: '/index.html'
+
+include: ["_pages"]
+permalink: /:title/
+
+
+# BuyOut Ecommerce
+buyout:
+  enabled: false
+  #buyout websites:
+  damlayayinevi: true
+  hepsiburada: true
+  dnr: true
+  idefix: true
+  kitapyurdu: true
+  odatvkitap: false
+  bkmkitap: true
+  amazontr: true
+  dkitap: true
+  trendyol: true
+  gittigidiyor: true
+
+# Plugins
+plugins: 
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-figure
+  - jekyll-gist
+ 
+# Defaults
+defaults:
+
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      avatar: /assets/images/avatar.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+
+  # all books
+  - scope:
+      type: "books"
+      path: "_books"
+    values:
+      layout: book
+
+  - scope:
+      type: "educations"
+      path: "_educations"
+    values:
+      layout: education
+
+
+  # all slides
+  - scope:
+      type: "slides"
+      path: "_slides"
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# XML feed
+feed:
+  collections:
+    books:
+      path: "/hikayeler/feed.xml"
+    educations:
+      path: "/egitim/feed.xml"
+
+# excerpt
+excerpt_separator: <!--more-->
+
+# Paginate
+paginate: 10
+#paginate_path: /page:num/
+paginate_path: "/blog/page:num/"
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-3412143450191416"
+adsense-data-ad-slot: "1363087678"
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "enabled"
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+collections:
+  books:
+    output: true
+    permalink: /hikayeler/:title
+    sort_by: publish-number
+  educations:
+    output: true
+    permalink: /egitim/:title
+  concepts:
+    output: true
+    permalink: /baskin-zeka-grubu/:title
+  slides: 
+    output: false
+    sort_by: order
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]

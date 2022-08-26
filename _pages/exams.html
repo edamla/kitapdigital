@@ -1,0 +1,26 @@
+---
+title: "Sınavlar"
+layout: default
+permalink: "/sinavlar"
+---
+
+<div class="container">
+    <h4 class="font-weight-bold spanborder"><span>{{page.title}}</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+        {% for book in site.books %}
+            {% if book.examean %}
+                <div class="col-lg-3 mb-5">
+                    <div class="p-4 border rounded">
+                        <div class="row">
+                            <a href="{{ book.url }}"> 
+                            <div class="col-md-12 d-flex justify-content-between mb-4 mb-md-1"><img alt="{{ book.title }}" src="{{site.baseurl}}/{{ book.examimage }}" class="rounded-circle" height="100%" width="100%"></div>
+                                <div class="col-md-12">
+                                    <h5 class="text-dark mb-0 justify-content-center text-center"> {{ book.title }} </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

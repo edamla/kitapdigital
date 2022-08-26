@@ -1,0 +1,48 @@
+---
+title: "Çizerlerimiz"
+layout: default
+permalink: "/cizerler"
+comments: false
+---
+
+<div class="container">
+    <h4 class="font-weight-bold spanborder"><span>{{page.title}}</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+        {% for illustrator in site.illustrators %}
+            <div class="col-lg-3 mb-5">
+                <div class="p-4 border rounded">
+                    <div class="row">
+                        <a href="{{site.baseurl}}/{{ illustrator.url }}">
+                        <div class="col-md-12 d-flex justify-content-between mb-4 mb-md-1"><img alt="{{ illustrator.title }}" src="{{site.baseurl}}/{{ illustrator.image }}" class="rounded-circle" height="100%" width="100%"></div>
+                            <div class="col-md-12">
+                                
+                                <h4 class="text-dark mb-0 justify-content-center text-center"> {{ illustrator.title }} </h4>
+                                <!-- <small class="d-inline-block mt-1 mb-3 font-weight-normal">(View Posts)</small> 
+                                <div class="excerpt">{{ illustrator.excerpt | markdownify }}</div> -->
+                                </a>
+                                <div class="icon-block mt-3 d-flex justify-content-center">  
+                                    <div>
+                                    {% if illustrator.twitter %}    
+                                    <a target="_blank" href="{{ illustrator.twitter }}"><i class="fab fa-twitter text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    {% endif %}
+                                    {% if illustrator.facebook %} 
+                                    <a target="_blank" href="{{ illustrator.facebook }}"><i class="fab fa-facebook text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    {% endif %}
+                                    {% if illustrator.youtube %} 
+                                    <a target="_blank" href="{{ illustrator.youtube }}"><i class="fab fa-youtube text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    {% endif %}
+                                    {% if illustrator.instagram %} 
+                                    <a target="_blank" href="{{ illustrator.instagram }}"><i class="fab fa-instagram text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    {% endif %}
+                                    {% if illustrator.site %} 
+                                    <a target="_blank" href="{{ illustrator.site }}"><i class="fa fa-globe text-muted" aria-hidden="true"></i></a> &nbsp;
+                                    {% endif %}
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

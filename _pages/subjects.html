@@ -1,0 +1,78 @@
+---
+title: "Temalar"
+layout: default
+permalink: "/temalar"
+---
+
+<div class="container">
+
+<h4 class="font-weight-bold spanborder mt-3"><span>{{page.title}}</span></h4>
+
+        {% assign arrsubjects = "" | split: "," %}
+        <!-- Burada konu listesi oluştur.     -->
+        {% for book in site.books %}
+            {% if book.subjects != "" %}
+                {% for subject in book.subjects %}
+                    <!-- kitaplardan konu listelerini al listeye ekle -->
+                    {% assign arrsubjects = arrsubjects | push: subject %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <!-- Tekrar eden listeleri kaldır. -->
+        {% assign uniqsubjectarray = arrsubjects | uniq %}
+
+        <div class="row">
+            {% for subject in uniqsubjectarray %}
+            <!-- toogle sınıf -->
+    
+            <div class="col-lg-2 mb-3">
+                <a href="#konu_{{subject | downcase | slugify: 'latin'}}" onclick="ackapa('.konu-{{subject | downcase | slugify: 'latin'}}');return false;">
+                <div class="p-2 border rounded">
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-between mb-1 mb-md-1"></div>
+                        <div class="col-md-12">
+                                <h6 class="text-dark mb-0 justify-content-between text-center text-nowrap"> {{subject}} </h6>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+    
+            {% endfor %}
+        </div>
+        
+        {% for subject in uniqsubjectarray %}
+        <div class="konu konu-{{subject | downcase | slugify: 'latin' }} d-none">
+                <h4 class="font-weight-bold spanborder mt-3" id="konu_{{subject | downcase | slugify: 'latin'}}"><span>{{subject}}</span></h4>
+                {% assign books = site.books | where: 'subjects', subject | sort: "grades"%}
+                <div class="row gap-y listrecent listauthor">
+                {% for book in books %}
+                    <div class="col-12 col-sm-3 p-4 border rounded kitap-kutu">
+                        <a class="baslik-link" href="{{ book.url }}"">            
+                            <img class="cover-images" src="{{site.baseurl}}/{{ book.image }}" alt="">
+                            <h6 class="text-dark mb-0"> {{ book.title }} </h6>
+                            <!-- <h5 class="d-inline-block mt-2 mb-1 font-weight-normal">Sınıf:</h5> -->
+                            {% for bookgrade in book.grades %}
+                                <h5 class="d-inline-block mt-2 mb-1 font-weight-normal">{{bookgrade}}.
+                                {% if forloop.last == true %}Sınıf{% endif %}
+                                </h5>
+                            {% endfor %}
+                        </a>
+                    </div>  
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+
+</div>
+
+<script>
+    // document.querySelector('.konu-{{subject | downcase | slugify: 'latin'}}').classList.toggle('d-none')
+    function ackapa(className) {
+        document.querySelectorAll('.konu').forEach(function(el) {
+            el.classList.add('d-none');
+        });
+        document.querySelector(className).classList.toggle('d-none');
+    }
+</script>

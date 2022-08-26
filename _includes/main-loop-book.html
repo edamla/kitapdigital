@@ -1,0 +1,8 @@
+{% if book.image %}
+<div class="col-6 col-md-3">
+	<a href="{{site.baseurl}}/{{book.url}}">
+	<h2 class="mb-1 h4 font-weight-bold">{{ book.title }}</h2>
+	<img class="w-100" src="{% if book.image contains "://" %}{{ book.image }}{% else %}{{ site.baseurl }}/{{ book.image }}{% endif %}" alt="{{ book.title }}">
+	</a>
+</div>
+{% endif %}

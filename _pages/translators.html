@@ -1,0 +1,37 @@
+---
+title: "Çevirmenler"
+layout: default
+permalink: "/cevirmenler"
+---
+
+<div class="container">
+    <h4 class="font-weight-bold spanborder"><span>{{page.title}}</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+        {% for translator in site.translators %}
+            <div class="col-lg-3 mb-5">
+                <div class="p-4 border rounded">
+                    <div class="row">
+                        <a href="{{site.baseurl}}/{{ translator.url }}">
+                        <div class="col-md-12 d-flex justify-content-between mb-4 mb-md-1"><img alt="{{ translator.title }}" src="{{site.baseurl}}/{{ translator.image }}" class="rounded-circle" height="100%" width="100%"></div>
+                            <div class="col-md-12">
+                                
+                                <h4 class="text-dark mb-0 justify-content-center text-center"> {{ translator.title }} </h4>
+                                <!-- <small class="d-inline-block mt-1 mb-3 font-weight-normal">(View Posts)</small> 
+                                <div class="excerpt">{{ translator.excerpt | markdownify }}</div> -->
+                                </a>
+                                <div class="icon-block mt-3 d-flex justify-content-center">  
+                                    <div>
+                                    <a target="_blank" href="{{ translator.twitter }}"><i class="fab fa-twitter text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    <a target="_blank" href="{{ translator.facebook }}"><i class="fab fa-facebook text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    <a target="_blank" href="{{ translator.youtube }}"><i class="fab fa-youtube text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    <a target="_blank" href="{{ translator.instagram }}"><i class="fab fa-instagram text-muted" aria-hidden="true"></i></a>  &nbsp;
+                                    <a target="_blank" href="{{ translator.site }}"><i class="fa fa-globe text-muted" aria-hidden="true"></i></a> &nbsp;
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

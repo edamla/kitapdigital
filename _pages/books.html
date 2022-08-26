@@ -1,0 +1,29 @@
+---
+title: "Hikayeler"
+layout: default
+permalink: "/hikayeler"
+---
+
+<div class="container">
+
+<h4 class="font-weight-bold spanborder mt-3"><span>{{page.title}}</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+        {% assign books = site.books | sort: "publish-number"  | reverse %}
+        {% for book in books %}
+
+        <div class="col-12 col-sm-3 p-4 border rounded kitap-kutu">
+            <a class="baslik-link" href="{{ book.url }}"">            
+                <img class="cover-images" src="{{site.baseurl}}/{{ book.image }}" alt="">
+                <h6 class="text-dark mb-0"> {{ book.title }} </h6>
+                {% if siteauthor %}
+                {% for bookauthor in book.authors %}
+                {% assign siteauthor = site.authors | where:"key", bookauthor | first %}
+                    <h5 class="d-inline-block mt-2 mb-1 font-weight-normal">{{siteauthor.title}}</h5>
+                    {% if forloop.last == false %} - {% endif %}
+                {% endfor %}
+                {% endif %}
+            </a>
+        </div>  
+        {% endfor %}
+    </div>
+</div>

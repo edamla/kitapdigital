@@ -1,0 +1,87 @@
+---
+title: "Sınıflar"
+layout: default
+permalink: "/siniflar"
+---
+
+<div class="container">
+
+<h4 class="font-weight-bold spanborder mt-3"><span>{{page.title}}</span></h4>
+
+        {% assign arrgrades = "" | split: "," %}
+        <!-- Burada konu listesi oluştur.     -->
+        {% for book in site.books %}
+            {% if book.grades != "" %}
+                {% for grade in book.grades %}
+                    <!-- kitaplardan sınıf listelerini al listeye ekle -->
+                    {% assign arrgrades = arrgrades | push: grade %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <!-- Tekrar eden listeleri kaldır. -->
+        {% assign uniqgradesarray = arrgrades | uniq %}
+
+        <div class="row">
+        {% for grade in uniqgradesarray %}
+        <!-- toogle sınıf -->
+
+        <!-- <div class="col-lg-2 mb-3">
+            <a href="#sinif_{{grade}}" onclick="ackapa('.sinif-{{grade}}');return false;">
+            <div class="p-4 border rounded">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between mb-1 mb-md-1"></div>
+                    <div class="col-md-12">
+                            <h5 class="text-dark mb-0 justify-content-center text-center"> {{grade}}. Sınıf </h5>
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div> -->
+        <div class="col-lg-2 mb-3">
+            <a href="#sinif_{{subject | downcase | slugify: 'latin'}}" onclick="ackapa('.sinif-{{grade | downcase | slugify: 'latin'}}');return false;">
+            <div class="p-2 border rounded">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between mb-1 mb-md-1"></div>
+                    <div class="col-md-12">
+                            <h6 class="text-dark mb-0 justify-content-between text-center text-nowrap">  {{grade}}. Sınıf </h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>
+
+        {% endfor %}
+        </div>
+        
+        
+
+        {% for grade in uniqgradesarray %}
+        <div class="sinif sinif-{{grade}} d-none">
+                <h4 class="font-weight-bold spanborder mt-3"  id="sinif_{{grade}}"><span>{{grade}}. Sınıf</span></h4>
+                {% assign books = site.books | where: 'grades', grade | sort: "grade"%}
+                <div class="row gap-y listrecent listauthor">
+                {% for book in books %}
+                    <div class="col-12 col-sm-3 p-4 border rounded kitap-kutu">
+                        <a class="baslik-link" href="{{ book.url }}"">            
+                            <img class="cover-images" src="{{site.baseurl}}/{{ book.image }}" alt="">
+                            <h6 class="text-dark mb-0"> {{ book.title }} </h6>
+                        </a>
+                    </div>  
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+
+</div>
+
+<script>
+    // document.querySelector('.sinif-{{grade}}').classList.toggle('d-none')
+    // document.querySelector('.konu-{{subject | downcase | slugify: 'latin'}}').classList.toggle('d-none')
+    function ackapa(className) {
+        document.querySelectorAll('.sinif').forEach(function(el) {
+            el.classList.add('d-none');
+        });
+        document.querySelector(className).classList.toggle('d-none');
+    }
+</script>

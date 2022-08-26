@@ -1,0 +1,89 @@
+---
+title: "Anasayfa"
+layout: default
+pagination:
+enabled: true
+description: "Çocuklara Okumayı Sevdiren Yayınevi..."
+---
+
+
+<div class="container">
+
+    {% if page.url == "/" %}
+
+
+    <!-- slider -->
+    {% include slider.html %}
+
+
+
+    <div class="container d-none">
+        <div class="row">
+            <div class="col-12 onlineSinav">
+                <h1 class="OnlineBaslik">Online Sınav Platformu</h1>
+                <a href="https://e-damla.com.tr/site/login" target="_blank">
+                    <button type="button" class="btn btn-danger btn-lg UyeOlButon">
+                        <h4> Üye Ol </h4>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4" >
+        <div class="row">
+            {% for post in site.posts %}
+            {% if post.homepage== true %}
+          <div class="col-md-4 border mb-4">
+              <div class="card mx-auto my-auto">
+             <a class="text-center" href="{{site.baseurl}}{{post.url}}">
+                {%   if  post.image %}
+                        <img class="rounded-pill" style="max-height: 20vh;" src="{{site.baseurl}}{{post.image}}" alt="">
+                {% endif %}
+                            <h3>{{post.title}}</h3>
+                    </a>
+                    <p >
+                        <!-- {{ post.excerpt | strip_html | strip_newlines | truncate: 146 }} -->
+                        {{ post.excerpt | strip_html | strip_newlines }}
+                    </p>
+                </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    <!-- {% assign books = site.books %}
+{% include product-slider.html %}
+   
+<!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
+    {% for post in site.posts %}
+    {% if post.sticky %}
+    <div class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative">
+        <div class="pl-4 pr-0 h-100 tofront">
+            <div class="row justify-content-between">
+                <div class="col-md-6 pt-5 pb-5 pr-lg-4 align-self-center d-none">
+                    <h1 class="mb-3">{{post.title}}</h1>
+                    <p class="mb-3 lead">
+                        <!-- {{ post.excerpt | strip_html | strip_newlines | truncate: 146 }} -->
+                        {{ post.excerpt | strip_html | strip_newlines }}
+                    </p>
+                    <a href="{{site.baseurl}}{{post.url}}" class="btn btn-dark">Devamını oku</a>
+                </div>
+                <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;">
+                    <img src="{{site.baseurl}}{{post.image}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+
+    {% endif %}
+    <!--endif page url is / -->
+
+
+
+</div>

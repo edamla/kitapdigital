@@ -1,0 +1,30 @@
+---
+title: "Eğitim Setleri"
+layout: default
+permalink: "/egitim"
+---
+
+<div class="container">
+
+<h4 class="font-weight-bold spanborder mt-3"><span>{{page.title}}</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+
+        {% assign educations = site.educations | sort: "publish-number" %}
+        {% for education in educations %}
+
+        <div class="col-12 col-sm-3 p-4 border rounded kitap-kutu">
+            <a class="baslik-link" href="{{ education.url }}"">            
+                <img class="cover-images" src="{{site.baseurl}}/{{ education.image }}" alt="">
+                <h6 class="text-dark mb-0"> {{ education.title }} </h6>
+                {% if siteauthor %}
+                {% for educationauthor in education.authors %}
+                {% assign siteauthor = site.authors | where:"key", educationauthor | first %}
+                    <h5 class="d-inline-block mt-2 mb-1 font-weight-normal">{{siteauthor.title}}</h5>
+                    {% if forloop.last == false %} - {% endif %}
+                {% endfor %}
+                {% endif %}
+            </a>
+        </div>  
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% if page.layout == 'post' %}
+    <html lang="{{page.language}}">
+{%else %}
+    <html lang="{{site.language}}">
+{% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{page.title}} | {{site.name}}</title>
+
+    {% seo %}
+
+    <link rel="alternate" type="application/rss+xml" href="{{site.baseurl}}/feed.xml" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/{{site.favicon}}">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/favicon/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+    
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/theme.css">
+
+    <!-- Tiny Slider -->
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/tiny-slider.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/custom.css">
+
+    <!-- Material Design Icons-->
+    <link href="{{site.baseurl}}/assets/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    {% include tracking-header.html %}
+
+
+</head>
+
+
+
+<body class="{% if page.url == "/" %} homefirstpage {% endif %}">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ site.baseurl }}/index.html"><strong><img src="{{site.baseurl}}/assets/images/logo.png" alt="{{site.name}}" style="max-height: 6vh;"></strong></a>
+
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               {% include menu-header.html %}
+            </ul>
+            <ul class="navbar-nav d-flex  align-items-center align-items-lg-end">
+               {% include menu-header1.html %}
+            </ul>
+            <!-- <ul class="navbar-nav d-md-flex d-none flex-row" style="justify-content: center;">
+                {% include menu-socialmedia.html %}
+            </ul>
+            <ul class="navbar-nav justify-content-center d-md-none d-flex flex-row mobil">
+                {% include menu-socialmedia.html %}
+            </ul> -->
+            <!-- <ul class="navbar-nav ml-auto d-flex align-items-center">
+                {% include search-lunr.html %}
+            </ul> -->
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        {{ content }}
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="{{site.baseurl}}/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <footer class="border-top p-3 text-white small" style="background-color: #25272a">
+        <div class="container">
+        <div class="row justify-content-center">
+            <span class="navbar-brand mr-2 mb-0 text-center"><img style="max-height: 70px;" src="{{site.baseurl}}/assets/images/logo-bw.png"></span>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"></span>
+                <span class="text-center">Copyright © <script>document.write(new Date().getFullYear())</script> Mink Damla, Damla Yayınevi'nin Tescilli Markasıdır.</span>
+
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    {% include tracking-footer.html %}
+
+    {% if site.lazyimages == "enabled" %}
+    <script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
+    {% endif %}
+
+    {% if page.layout == 'post' %}
+    <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
+    {% endif %}
+
+
+</body>
+
+</html>

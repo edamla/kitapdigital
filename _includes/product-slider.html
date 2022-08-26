@@ -1,0 +1,60 @@
+<style>
+    button[data-action="stop"] {
+    display: none;
+    }
+    button[data-action="start"] {
+    display: none;
+    }
+    
+</style>
+
+<div class="container add-site-content-margin slider">
+
+        <div class="product-slider h-10" id="product-slider">
+            {% for book in books %}
+                <div class="item">
+                    <a class="item img book-{{forloop.index}}" href="{{ book.url }}">
+                        <img class="img-fluid h-25 slider-image cover-shadow" src="/{{ book.image }}" alt="{{ book.title }}">
+                    </a>
+                </div>
+            {% endfor %}   
+        </div>
+
+<!-- tiny slider -->
+<script src="{{site.baseurl}}/assets/js/tiny-slider.js"></script>
+<script>
+  var productslider = tns({
+    container: '.product-slider',
+    items: 2,
+    autoHeight: true,
+    slideBy: 'page',
+    mouseDrag: true,
+    swipeAngle: false,
+    loop: true,
+    autoplay: true,
+    speed: 600,
+    controls: false,
+    nav: false,
+    prevButton: true,
+    nextButton: true,
+    autoplayButton: false,
+    edgePadding: 10,
+        gutter: 10,
+    // pixels from bootstap document: https://getbootstrap.com/docs/4.1/layout/grid/
+    responsive: {
+        576: {
+            items: 2
+        },
+        768: {
+            items: 4
+        },
+        992: {
+            items: 5
+        },
+        1140: {
+            items: 5
+        }
+    }
+  }
+  );
+</script>

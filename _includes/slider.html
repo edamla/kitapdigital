@@ -1,0 +1,45 @@
+<style>
+    button[data-action="stop"] {
+    display: none;
+    }
+    button[data-action="start"] {
+    display: none;
+    }
+    
+</style>
+
+<div class="container remove-site-content-margin slider">
+
+        <div class="base" id="base">
+            {% for slide in site.slides %}
+            <div class="item w-100 img img-{{forloop.index}}">
+                    <a href="{{ slide.href }}" target="{{ slide.target }}">
+                        <img class="d-none d-md-block w-100 img-fluid" src="{{ slide.img }}" alt="{{ slide.title }}">
+                        <img class="d-block d-md-none w-100 img-fluid" src="{{ slide.mobile-img }}" alt="{{ slide.title }}">
+                    </a>
+            </div>
+            {% endfor %}   
+        </div>
+</div>
+
+<!-- tiny slider -->
+<script src="{{site.baseurl}}/assets/js/tiny-slider.js"></script>
+
+<script>
+  var slider = tns({
+    container: '.base',
+    items: 1,
+    autoWidth: true,
+    slideBy: 'page',
+    mouseDrag: true,
+    swipeAngle: false,
+    loop: true,
+    autoplay: true,
+    speed: 400,
+    controls: false,
+    nav: false,
+    prevButton: false,
+    nextButton: false,
+    autoplayButton: false
+  });
+</script>
