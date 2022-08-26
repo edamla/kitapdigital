@@ -1,6 +1,6 @@
 ---
-layout: education
-title: "ÇİZGİLER AKTİVİTE KİTABIM"
+layout: brand
+title: "Rafting Yayınları"
 authors: ["Komisyon"]
 grades: [2 ,3]
 concepts: ["gorsel-uzamsal","sosyal","doga"]

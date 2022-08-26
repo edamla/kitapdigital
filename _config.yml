@@ -1,14 +1,14 @@
 # Site
-name: 'Minik Damla'
+name: 'Dijital Kitap'
 language: "tr"
-description: 'Çocuklara Okumayı Sevdiren Yayınevi...'
-logo: 'assets/images/logo.png'
+description: 'Kitabın dijitalleştiği adres...'
+logo: 'assets/images/logo.svg'
 favicon: 'assets/images/favicon/favicon.ico'
 baseurl: ''
 
 # Social Settings
 disqus: #'demowebsite'
-email: 'iletisim@damlayayinevi.com.tr'
+email: 'iletisim@dkitap.com'
 mailchimp-list: #'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 google_analytics: 'UA-53710816-12'
 katalogurl-egitim: 'https://cdn.e-damla.com.tr/PUBLIC/Kataloglar/okul-oncesi-egitim/index.html'
@@ -69,18 +69,11 @@ defaults:
     values:
       layout: page
 
-  # all books
   - scope:
-      type: "books"
-      path: "_books"
+      type: "brands"
+      path: "_brands"
     values:
-      layout: book
-
-  - scope:
-      type: "educations"
-      path: "_educations"
-    values:
-      layout: education
+      layout: brand
 
 
   # all slides
@@ -95,10 +88,8 @@ highlighter: rouge
 # XML feed
 feed:
   collections:
-    books:
-      path: "/hikayeler/feed.xml"
-    educations:
-      path: "/egitim/feed.xml"
+    brands:
+      path: "/markalar/feed.xml"
 
 # excerpt
 excerpt_separator: <!--more-->
@@ -122,16 +113,9 @@ sass:
   style: compressed
 
 collections:
-  books:
+  brands:
     output: true
-    permalink: /hikayeler/:title
-    sort_by: publish-number
-  educations:
-    output: true
-    permalink: /egitim/:title
-  concepts:
-    output: true
-    permalink: /baskin-zeka-grubu/:title
+    permalink: /markalar/:title
   slides: 
     output: false
     sort_by: order
